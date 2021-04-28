@@ -3,24 +3,21 @@
 \*------------------------------------*/
 
 @font-face {
-    font-family: "HK Grotesk Web";
+    font-family: 'HK Grotesk Web';
     font-weight: 200;
-    src: url("../fonts/hkgrotesk-light-webfont.woff2") format("woff2"),
-         url("../fonts/hkgrotesk-light-webfont.woff") format("woff");
+    src: url('../fonts/hkgrotesk-light-webfont.woff2') format('woff2'), url('../fonts/hkgrotesk-light-webfont.woff') format('woff');
 }
 
 @font-face {
-    font-family: "HK Grotesk Web";
+    font-family: 'HK Grotesk Web';
     font-weight: 400;
-    src: url("../fonts/hkgrotesk-regular-webfont.woff2") format("woff2"),
-         url("../fonts/hkgrotesk-regular-webfont.woff") format("woff");
+    src: url('../fonts/hkgrotesk-regular-webfont.woff2') format('woff2'), url('../fonts/hkgrotesk-regular-webfont.woff') format('woff');
 }
 
 @font-face {
-    font-family: "HK Grotesk Web";
+    font-family: 'HK Grotesk Web';
     font-weight: 600;
-    src: url("../fonts/hkgrotesk-medium-webfont.woff2") format("woff2"),
-         url("../fonts/hkgrotesk-medium-webfont.woff") format("woff");
+    src: url('../fonts/hkgrotesk-medium-webfont.woff2') format('woff2'), url('../fonts/hkgrotesk-medium-webfont.woff') format('woff');
 }
 
 /*------------------------------------*\
@@ -36,7 +33,7 @@
 html {
     font-size: 16px;
     line-height: 1.5;
-    font-family: "HK Grotesk Web", Helvetica, arial, sans-serif;
+    font-family: 'HK Grotesk Web', Helvetica, arial, sans-serif;
     color: #202024;
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
@@ -64,7 +61,7 @@ html {
  */
 
 ::selection {
-    background: #5051DB;
+    background: #5051db;
     color: white;
     text-shadow: none;
 }
@@ -159,7 +156,7 @@ figcaption {
     font-size: 12px;
     line-height: 16px;
     margin-top: 8px;
-    color: #3C3C42;
+    color: #3c3c42;
 }
 
 hr {
@@ -170,18 +167,18 @@ hr {
 }
 
 a {
-    color: #5051DB;
-    transition: all .1s ease-in-out;
+    color: #5051db;
+    transition: all 0.1s ease-in-out;
 }
 
 a:visited,
 a:active {
-    color: #3E3EA8;
+    color: #3e3ea8;
 }
 
 a:hover,
 a:focus {
-    color: #3E3EA8;
+    color: #3e3ea8;
 }
 
 /*------------------------------------*\
@@ -203,11 +200,11 @@ a:focus {
 /* color modifiers */
 
 .o-row--neutral-x-light {
-    background-color: #F7F7FA;
+    background-color: #f7f7fa;
 }
 
 .o-row--gradient-1 {
-    background: linear-gradient(to top right, #5051DB, #3887F7);
+    background: linear-gradient(to top right, #5051db, #3887f7);
     color: #fff;
 }
 
@@ -295,9 +292,9 @@ a:focus {
     flex-wrap: wrap;
 }
 
-    .o-layout__item {
-        flex-basis: 100%;
-    }
+.o-layout__item {
+    flex-basis: 100%;
+}
 
 /* gutter modifiers, these affect o-layout__item too */
 
@@ -614,7 +611,7 @@ a:focus {
 .c-nav__link--meta,
 .c-nav__link--meta:visited,
 .c-nav__link--meta:active {
-    color: #6C6C75;
+    color: #6c6c75;
 }
 
 .is-selected .c-nav__link,
@@ -632,6 +629,83 @@ a:focus {
 
     .c-nav__link {
         padding: 8px 16px;
+    }
+}
+
+/*
+    Component: mobile nav
+    ---
+    Dedicated mobile nav component
+*/
+
+.c-page {
+    transition: transform 1.25s ease;
+    transform: translateX(0);
+}
+
+.has-mobile-nav .c-page {
+    transform: translateX(25%);
+}
+
+.c-mobile-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+}
+
+.has-mobile-nav .c-mobile-nav {
+    transform: translateX(0%);
+}
+
+.c-mobile-nav__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.c-mobile-nav__bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #202024;
+    transition: opacity 1.25s ease;
+    opacity: 0;
+}
+
+.has-mobile-nav .c-mobile-nav__bg {
+    opacity: 0.5;
+}
+
+.c-mobile-nav__body {
+    position: relative;
+    padding: 24px;
+    height: 100vh;
+    width: 100vw;
+    background-color: #fff;
+    transition: transform 1.25s ease;
+    transform: translateX(-100%);
+}
+
+.has-mobile-nav .c-mobile-nav__body {
+    transform: translateX(0);
+}
+
+@media (min-width: 768px) {
+    .c-mobile-nav__body {
+        padding: 48px;
+    }
+}
+
+@media (min-width: 992px) {
+    /* Hide the mobile nav on larger viewports even whent it's open on smaller screens */
+    .c-mobile-nav {
+        display: none !important;
     }
 }
 
@@ -724,7 +798,7 @@ a:focus {
     margin-top: 8px;
     padding-left: 6px;
     padding-top: 1px;
-    border: 2px solid #5051DB;
+    border: 2px solid #5051db;
     border-width: 0 0 0 2px;
 }
 
@@ -784,38 +858,38 @@ a:focus {
     line-height: 24px;
     font-weight: 400;
     padding: 4px 0;
-    transition: color .175s ease-in;
+    transition: color 0.175s ease-in;
 }
 
 .c-link-cta,
 .c-link-cta:visited,
 .c-link-cta:active {
-    color: #7373F5;
+    color: #7373f5;
 }
 
 .c-link-cta::after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     bottom: 0;
     left: 0;
     height: 1px;
     width: 100%;
-    background-color: #7373F5;
-    transform: scaleX(.5);
+    background-color: #7373f5;
+    transform: scaleX(0.5);
     transform-origin: left;
     transition-property: transform, background-color;
-    transition-duration: .175s;
+    transition-duration: 0.175s;
     transition-timing-function: ease-in;
 }
 
 .c-link-cta:hover {
-    color: #3E3EA8;
+    color: #3e3ea8;
 }
 
 .c-link-cta:hover::after {
     transform: scaleX(1);
-    background-color: #3E3EA8;
+    background-color: #3e3ea8;
 }
 
 /* inversed */
@@ -843,15 +917,15 @@ a:focus {
 */
 
 .u-color-primary-light {
-    color: #7373F5;
+    color: #7373f5;
 }
 
 .u-color-primary-base {
-    color: #5051DB;
+    color: #5051db;
 }
 
 .u-color-primary-dark {
-    color: #3E3EA8;
+    color: #3e3ea8;
 }
 
 /*
@@ -1176,18 +1250,18 @@ a:focus {
         text-decoration: underline;
     }
     a[href]:after {
-        content: " (" attr(href) ")";
+        content: ' (' attr(href) ')';
     }
     abbr[title]:after {
-        content: " (" attr(title) ")";
+        content: ' (' attr(title) ')';
     }
     /*
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
      */
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
+    a[href^='#']:after,
+    a[href^='javascript:']:after {
+        content: '';
     }
     pre {
         white-space: pre-wrap !important;
